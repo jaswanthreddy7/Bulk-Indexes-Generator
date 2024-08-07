@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulk Indexes Generator</title>
+    <title>Bulk Index Creator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Bulk Indexes Generator</h1>
+        <h1>Bulk Index Creator</h1>
         <form id="upload-form">
             <label for="datatype">Datatype:</label>
-            <select id="datatype" name="datatype" required>
+            <select id="datatype" name="datatype">
                 <option value="">Select Datatype</option>
                 <option value="Metrics">Metrics</option>
                 <option value="Events">Events</option>
@@ -29,15 +29,15 @@
             <label for="selfStorageBucketPath">Self Storage Bucket Path:</label>
             <input type="text" id="selfStorageBucketPath" name="selfStorageBucketPath">
 
-            <label for="file-input">Upload Excel File:</label>
-            <input type="file" id="file-input" accept=".xlsx, .xls" required>
+            <label for="file-input">Upload Excel or CSV File:</label>
+            <input type="file" id="file-input" accept=".xlsx, .xls, .csv" required>
 
             <button type="submit">Upload and Convert</button>
         </form>
         <pre id="output"></pre>
     </div>
     <footer>
-        <p>For Prudent Internal Use Only</p>
+        <p>For Prudent Internal use Only</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="script.js"></script>
