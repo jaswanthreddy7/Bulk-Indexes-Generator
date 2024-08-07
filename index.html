@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulk Indexes Generator</title>
+    <title>Bulk Index Creator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Bulk Indexes Generator</h1>
+        <h1>Bulk Index Creator</h1>
         <form id="upload-form">
             <label for="datatype">Datatype:</label>
             <select id="datatype" name="datatype">
@@ -35,6 +35,13 @@
             <button type="submit">Upload and Convert</button>
         </form>
         <pre id="output"></pre>
+        <div id="download-section" style="display:none;">
+            <label for="filename">Output JSON Filename:</label>
+            <input type="text" id="filename" name="filename" required>
+            <button id="preview-button">Preview JSON</button>
+            <pre id="filename-preview"></pre>
+            <button id="download-button" style="display: none;">Download JSON</button>
+        </div>
     </div>
     <footer>
         <p>For Prudent Internal use Only</p>
