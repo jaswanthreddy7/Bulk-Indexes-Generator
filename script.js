@@ -29,7 +29,7 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
                 if (values.length > 1) {
                     var indexObj = { name: values[0] };
                     headers.forEach((header, i) => {
-                        if (i === 0) return; // skip name
+                        if (i === 0 || header.toLowerCase() === 'count') return; // skip name and count field
                         if (values[i]) {
                             indexObj[header] = isNaN(values[i]) ? values[i] : parseInt(values[i], 10);
                         }
@@ -54,7 +54,7 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
             indexes = json.slice(1).map(row => {
                 var indexObj = { name: row[0] };
                 headers.forEach((header, i) => {
-                    if (i === 0) return; // skip name
+                    if (i === 0 || header.toLowerCase() === 'count') return; // skip name and count field
                     if (row[i]) {
                         indexObj[header] = isNaN(row[i]) ? row[i] : parseInt(row[i], 10);
                     }
@@ -70,6 +70,22 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
         }
 
         document.getElementById('output').textContent = JSON.stringify(indexes, null, 2);
+        document.getElementById('download-section').style.display = 'block';
+
+        document.getElementById('preview-button').addEventListener('click', function() {
+            var filename = document.getElementById('filename').value || 'output';
+            document.getElementById('filename-preview').textContent = 'Filename: ' + filename + '.json';
+            document.getElementById('download-button').style.display = 'block';
+        });
+
+        document.getElementById('download-button').addEventListener('click', function() {
+            var filename = document.getElementById('filename').value || 'output';
+            var blob = new Blob([JSON.stringify(indexes, null, 2)], { type: 'application/json' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename + '.json';
+            link.click();
+        });
     };
 
     if (file.name.endsWith('.csv')) {
@@ -78,4 +94,5 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
         reader.readAsArrayBuffer(file);
     }
 });
-// Perpared by Jaswanth Reddy Nagu
+// Prepared by Jaswanth Reddy Nagu
+
