@@ -11,7 +11,11 @@
         <h1>Bulk Indexes Generator</h1>
         <form id="upload-form">
             <label for="datatype">Datatype:</label>
-            <input type="text" id="datatype" name="datatype">
+            <select id="datatype" name="datatype" required>
+                <option value="">Select Datatype</option>
+                <option value="Metrics">Metrics</option>
+                <option value="Events">Events</option>
+            </select>
 
             <label for="maxDataSizeMB">Max Data Size (MB):</label>
             <input type="number" id="maxDataSizeMB" name="maxDataSizeMB">
