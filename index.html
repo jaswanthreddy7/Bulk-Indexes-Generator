@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Indexes Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bulk Indexes Generator</h1>
+        <form id="upload-form">
+            <label for="datatype">Datatype:</label>
+            <input type="text" id="datatype" name="datatype">
+
+            <label for="maxDataSizeMB">Max Data Size (MB):</label>
+            <input type="number" id="maxDataSizeMB" name="maxDataSizeMB">
+
+            <label for="searchableDays">Searchable Days:</label>
+            <input type="number" id="searchableDays" name="searchableDays">
+
+            <label for="splunkArchivalRetentionDays">Splunk Archival Retention Days:</label>
+            <input type="number" id="splunkArchivalRetentionDays" name="splunkArchivalRetentionDays">
+
+            <label for="selfStorageBucketPath">Self Storage Bucket Path:</label>
+            <input type="text" id="selfStorageBucketPath" name="selfStorageBucketPath">
+
+            <label for="file-input">Upload Excel File:</label>
+            <input type="file" id="file-input" accept=".xlsx, .xls" required>
+
+            <button type="submit">Upload and Convert</button>
+        </form>
+        <pre id="output"></pre>
+    </div>
+    <footer>
+        <p>For Prudent Internal use Only</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
