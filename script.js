@@ -69,7 +69,12 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
             });
         }
 
-        document.getElementById('output').textContent = JSON.stringify(indexes, null, 2);
+        // Wrap indexes inside { "indexes": [] }
+        var output = {
+            indexes: indexes
+        };
+
+        document.getElementById('output').textContent = JSON.stringify(output, null, 2);
         document.getElementById('download-section').style.display = 'block';
 
         document.getElementById('preview-button').addEventListener('click', function() {
@@ -80,7 +85,7 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
 
         document.getElementById('download-button').addEventListener('click', function() {
             var filename = document.getElementById('filename').value || 'output';
-            var blob = new Blob([JSON.stringify(indexes, null, 2)], { type: 'application/json' });
+            var blob = new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' });
             var link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = filename + '.json';
@@ -94,5 +99,3 @@ document.getElementById('upload-form').addEventListener('submit', function (e) {
         reader.readAsArrayBuffer(file);
     }
 });
-// Prepared by Jaswanth Reddy Nagu
-
